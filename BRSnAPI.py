@@ -11,7 +11,7 @@ import requests
 # =============================================================================
 class Blockchain:
     def __init__(self):
-        self.direct = os.path.join(os.getcwd(), 'BRSchain', 'brsChain')
+        self.direct = os.path.join(os.getcwd(), 'BRSchain')
         print('initiated')
     def getPreviousBlock(self):
         Path = os.path.join(self.direct, 'length.txt')
@@ -61,7 +61,7 @@ class Blockchain:
 # =============================================================================
 class client:
     def __init__(self):
-        self.direct = os.path.join(os.getcwd(), 'BRSchain', 'brsChain')
+        self.direct = os.path.join(os.getcwd(), 'BRSchain')
         #reputation of respective nodes to see which have the least issues
         Path = os.path.join(self.direct, 'nodes.json')
         with open(Path, "r") as f:
@@ -427,7 +427,7 @@ class client:
 class server():
 #just the opposite of the client class
     def start(self):
-        self.direct = os.path.join(os.getcwd(), 'BRSchain', 'brsChain')
+        self.direct = os.path.join(os.getcwd(), 'BRSchain')
         #connects to the node when the class is initialised
         print('i am a server')
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
@@ -639,12 +639,12 @@ def executeBlockCreation(blockInfo, ID):
 # =============================================================================
 # main loop
 # =============================================================================
-direct = os.path.join(os.getcwd(), 'BRSchain', 'brsChain', 'myTurn.txt')
+direct = os.path.join(os.getcwd(), 'BRSchain', 'myTurn.txt')
 with open(direct, "r") as f:
     endcount = int(f.read())
 Client = client()
 Server = server()
-Path = os.path.join(os.getcwd(), 'BRSchain', 'brsChain', 'nodes.json')
+Path = os.path.join(os.getcwd(), 'BRSchain', 'nodes.json')
 with open(Path, "r") as f:
     nodes = json.load(f)
     API = nodes["API"]
